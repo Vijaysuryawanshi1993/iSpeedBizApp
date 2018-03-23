@@ -4,10 +4,15 @@ import Header from "./common/Header";
 import {CardSection} from "./common/CardSection";
 import {InputSearch} from "./common/InputSearch";
 import {Actions} from 'react-native-router-flux';
+import WhatWeOffer from "./Home/WhatWeOffer";
 
 export default class Home extends React.Component {
     onDrawerIconPress() {
         Actions.auth();
+    }
+
+    renderSearchPress() {
+        Actions.company_search();
     }
 
     render() {
@@ -25,10 +30,12 @@ export default class Home extends React.Component {
                     </Text>
                     <View style={{marginVertical: 12}}>
                         <CardSection>
-                            <InputSearch placeholder='Search by company name'/>
+                            <InputSearch
+                                onPress={this.renderSearchPress.bind(this)}/>
                         </CardSection>
                     </View>
                 </View>
+                <WhatWeOffer/>
             </View>
         );
     }
